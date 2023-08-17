@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<a href="/"><h1 style="text-align: center">Rainbow Six Siege Tracker</h1></a>
+	<hr color= #ffd40c>
+	
+	
+	
+<div class="tabbuttons">
+	<button class="tablink" onclick="openPage('General', this)" id="defaultOpen">General Stats</button>
+	<button class="tablink" onclick="openPage('Ranked', this)">Ranked</button>
+	<button class="tablink" onclick="openPage('Casual', this)">Unranked and Casual</button>
+	<button class="tablink" onclick="openPage('Extra', this)">Other Modes</button>
+</div>
+
+
+<div id="General" class="tabcontent">
+	<hr color= #ffd40c style="width:365.5px;margin-top:-50px;margin-left:-20px">
+ 	<h2 class="headerGeneral" style="text-align: leading"><b>{{username}}'s General Stats</b></h1>
+	<div class="generalStats">
+		<p style="text-align:left;">KD Ratio = {{kdstat}}</p>
+		<p style="text-align:left;">Kills = {{killstat}}</p>
+	</div>
+</div>
+
+<div id="Ranked" class="tabcontent">
+	<hr color= #ffd40c style="width:365.5px;margin-top:-50px;margin-left:347.5px">
+  	<h2 class="headerRanked" style="text-align: leading"><b>{{username}}'s Ranked Stats</b></h2>
+  	<div class="rankedStats">
+  		<p style="text-align:left;">KD Ratio = {{rankedKDStat}}</p>
+  		<p style="text-align:left;">Kills = {{rankedKillsStat}}</p>
+  	</div>
+</div>
+
+<div id="Casual" class="tabcontent">
+	<hr color= #ffd40c style="width:365.5px;margin-top:-50px;margin-right:347.5px">
+	<h2 class="headerCasual" style="text-align: leading"><b>{{username}}'s Unranked and Casual Stats</b></h2>
+  	<div class="casualStats">
+  		<p style="text-align:left;">KD Ratio = {{unrankedKDStat}}</p>
+  		<p style="text-align:left;">Kills = {{unrankedKillsStat}}</p>
+ 	 </div>
+</div>
+
+<div id="Extra" class="tabcontent">
+	<hr color= #ffd40c style="width:365.5px;margin-top:-50px;margin-right:-20px">
+	<h2 class="headerOther" style="text-align: leading"><b>{{username}}'s Extra Modes Stats</b></h2>
+	<div class="otherStats">
+		<p style="text-align:left;">KD Ratio = {{otherKDStat}}</p>
+ 	 	<p style="text-align:left;">Kills = {{otherKillsStat}}</p>
+	</div>
+</div>	
+
+<script>
+	function openPage(pageName, elmnt) {
+ 		// Hide all elements with class="tabcontent" by default */
+  		var i, tabcontent, tablinks;
+  		tabcontent = document.getElementsByClassName("tabcontent");
+  		for (i = 0; i < tabcontent.length; i++) {
+    		tabcontent[i].style.display = "none";
+		}
+
+		// Remove the background color of all tablinks/buttons
+		/* tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].style.backgroundColor = "";
+		}*/
+
+  		// Show the specific tab content
+		document.getElementById(pageName).style.display = "block";
+
+  		// Add the specific color to the button used to open the tab content
+  		//elmnt.style.backgroundColor = #696969;
+	}
+
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+</script>
+
+
+
+
+<!--
+<div class="General">
+	<h2 class="headerGeneral" style="text-align: leading"><b>{{username}}'s General Stats</b></h1>
+	<div class="generalStats">
+		<p style="text-align:left;">KD Ratio = {{kdstat}}</p>
+		<p style="text-align:left;">Kills = {{killstat}}</p>
+	</div>
+</div>
+-->
+{% endblock %}
+
